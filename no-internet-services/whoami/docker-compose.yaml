@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  whoami:
+    container_name: whoami
+    image: traefik/whoami
+    command:
+       - --port=8081
+       - --name=whoami
+    networks:
+      - network_no-internet
+networks:
+  network_no-internet:
+    external: true

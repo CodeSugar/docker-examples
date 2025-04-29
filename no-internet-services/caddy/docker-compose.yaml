@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      - network_no-internet
+      - network_internet
+networks:
+  network_no-internet:
+    external: true
+  network_internet:
+    external: true
